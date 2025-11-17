@@ -7,6 +7,8 @@
 *.zip
 *.tar.gz
 *.rar
+### он почему-то меняется, а пулл риквест запрещает менять
+checkstyle.xml
 hs_err_pid*
 replay_pid*
 out/
