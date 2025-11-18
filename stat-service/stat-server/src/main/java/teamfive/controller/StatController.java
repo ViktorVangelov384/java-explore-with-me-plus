@@ -29,7 +29,7 @@ public class StatController {
     @GetMapping("/stats")
     public ResponseEntity<List<StatDto>> getStats(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime start,
                                                   @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime end,
-                                                  @RequestParam List<String> uris,
+                                                  @RequestParam(required = false) List<String> uris,
                                                   @RequestParam(defaultValue = "false") Boolean unique) {
         if (end.isBefore(start)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Дата окончания не может быть раньше даты начала!");
