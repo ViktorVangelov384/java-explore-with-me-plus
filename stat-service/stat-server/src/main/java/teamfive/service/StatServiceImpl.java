@@ -4,6 +4,7 @@ import dto.InputHitDto;
 import dto.OutHitDto;
 import dto.StatDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import teamfive.mapper.SimpleHitMapper;
 import teamfive.model.Hit;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class StatServiceImpl implements StatService {
     private final StatRepository statRepository;
@@ -23,6 +25,9 @@ public class StatServiceImpl implements StatService {
 
     @Override
     public List<StatDto> getStats(LocalDateTime start, LocalDateTime end, List<String> uris, Boolean unique) {
+        log.info("Запрос статистики: start={}, end={}, uris={}, unique={}",
+                start, end, uris, unique);
+
         if (uris != null && uris.isEmpty()) {
             return Collections.emptyList();
         }
@@ -39,6 +44,8 @@ public class StatServiceImpl implements StatService {
     @Override
     public OutHitDto createHit(InputHitDto inputHitDto) {
         Hit hit = mapper.dtoToHit(inputHitDto);
+        log.info("Запись статистики: app = {}, uri = {}, ip = {}, timestamp = {}",
+                inputHitDto.getApp(), inputHitDto.getUri(), inputHitDto.getIp(), inputHitDto.getTimestamp());
         return mapper.hitToDto(statRepository.save(hit));
     }
 }
