@@ -13,7 +13,6 @@ import teamfive.model.StatHit;
 import teamfive.storage.StatRepository;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,9 +29,6 @@ public class StatServiceImpl implements StatService {
         log.info("Запрос статистики: start={}, end={}, uris={}, unique={}",
                 start, end, uris, unique);
 
-        if (uris != null && uris.isEmpty()) {
-            return Collections.emptyList();
-        }
         List<StatHit> statHitList;
         if (unique) {
             statHitList = statRepository.getUniqueStat(start, end, uris);
