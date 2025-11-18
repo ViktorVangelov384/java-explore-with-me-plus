@@ -6,6 +6,7 @@ import dto.StatDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import teamfive.mapper.SimpleHitMapper;
 import teamfive.model.Hit;
 import teamfive.model.StatHit;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class StatServiceImpl implements StatService {
     private final StatRepository statRepository;
     private final SimpleHitMapper mapper;
@@ -41,6 +43,7 @@ public class StatServiceImpl implements StatService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     @Override
     public OutHitDto createHit(InputHitDto inputHitDto) {
         Hit hit = mapper.dtoToHit(inputHitDto);
