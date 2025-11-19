@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class StatServiceImpl implements StatService {
+
     private final StatRepository statRepository;
     private final SimpleHitMapper mapper;
 
