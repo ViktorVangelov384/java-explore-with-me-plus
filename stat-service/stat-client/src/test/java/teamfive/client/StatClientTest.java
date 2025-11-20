@@ -38,10 +38,11 @@ class StatClientTest {
     private StatClient statClient;
     private ObjectMapper objectMapper;
     private final String serverUrl = "http://localhost:9090";
+    private final String appName = "ewm-service";
 
     @BeforeEach
     void setUp() {
-        statClient = new StatClient(restClient, serverUrl);
+        statClient = new StatClient(restClient, serverUrl, appName);
         objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
     }

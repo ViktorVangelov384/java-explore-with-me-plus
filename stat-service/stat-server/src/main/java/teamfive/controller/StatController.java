@@ -34,7 +34,7 @@ public class StatController {
         if (end.isBefore(start)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Дата окончания не может быть раньше даты начала!");
         }
-
         return ResponseEntity.status(HttpStatus.OK).body(statService.getStats(start, end, uris, unique));
     }
+
 }

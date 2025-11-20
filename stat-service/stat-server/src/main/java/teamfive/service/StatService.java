@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface StatService {
+
     List<StatDto> getStats(LocalDateTime start,
                            LocalDateTime end,
                            List<String> uris,

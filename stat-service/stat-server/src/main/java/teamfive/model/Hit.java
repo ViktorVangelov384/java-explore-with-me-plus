@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class Hit {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
