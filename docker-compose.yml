@@ -30,7 +30,7 @@ services:
     # image: postgres:16.1
 
   ewm-server:
-    container_name: ewm-server
+    container_name: ewm-service
 
     build: ./main-service
     ports:
