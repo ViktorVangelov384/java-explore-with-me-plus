@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class InputHitDto {
+
     @NotNull(message = "не заполнен app")
     private String app;
 
