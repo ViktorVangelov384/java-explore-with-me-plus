@@ -29,7 +29,7 @@ services:
     #ewm-db:
     # image: postgres:16.1
 
-  ewm-server:
+  main-service:
     ports:
       - "8080:8080"
     build: ./main-service
@@ -42,7 +42,7 @@ services:
       - SPRING_DATASOURCE_USERNAME=admin
       - SPRING_DATASOURCE_PASSWORD=123
 
-  ewm-db:
+  main-service-db:
     container_name: ewm-db
     image: postgres:16.1
     #ports:
