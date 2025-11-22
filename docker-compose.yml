@@ -30,11 +30,11 @@ services:
     # image: postgres:16.1
 
   ewm-server:
-    container_name: ewm-service
-
-    build: ./main-service
     ports:
       - "8080:8080"
+    build: ./main-service
+    image: main-service-image
+    container_name: ewm-server
     depends_on:
       - ewm-db
     environment:
