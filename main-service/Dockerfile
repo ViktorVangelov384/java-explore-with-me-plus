@@ -1,5 +1,3 @@
-FROM eclipse-temurin:21-jre-jammy
-VOLUME /tmp
-COPY target/*.jar app.jar
-ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar /app.jar"]
-
+FROM amazoncorretto:21
+COPY target/*.jar main-server.jar
+ENTRYPOINT ["java", "-jar", "/main-server.jar"]
