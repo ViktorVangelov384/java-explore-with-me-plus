@@ -1,5 +1,7 @@
 package teamfive.client;
 
+import dto.InputHitDto;
+import dto.StatDto;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,8 +9,6 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
-import dto.InputHitDto;
-import dto.StatDto;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -28,6 +28,13 @@ public class StatClient {
         this.restClient = restClient;
         this.serverUrl = serverUrl;
         this.appName = appName;
+    }
+
+    public String sayHello(String iName) {
+        if (iName.isEmpty()) {
+            return "Привет тебе, чудо - незнакомец! тебя приветствует самый лучший в мире stat-server!";
+        }
+        return "Привет тебе, " + iName + "! тебя приветствует самый лучший в мире stat-server!";
     }
 
     public void hit(HttpServletRequest request) {
