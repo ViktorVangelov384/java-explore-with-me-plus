@@ -36,14 +36,14 @@ services:
     image: main-service-image
     container_name: ewm-server
     depends_on:
-      - ewm-db
+      - main-service-db
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://ewm-db:5432/ewm_db
       - SPRING_DATASOURCE_USERNAME=admin
       - SPRING_DATASOURCE_PASSWORD=123
 
   main-service-db:
-    container_name: ewm-db
+    container_name: main-service-db
     image: postgres:16.1
     #ports:
     #  - "5432:5432"
