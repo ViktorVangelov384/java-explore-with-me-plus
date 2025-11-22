@@ -32,7 +32,7 @@ services:
     depends_on:
       - main-service-db
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://ewm-db:5432/ewm_db
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ewm-db:5432/main-service-db
       - SPRING_DATASOURCE_USERNAME=admin
       - SPRING_DATASOURCE_PASSWORD=123
 
