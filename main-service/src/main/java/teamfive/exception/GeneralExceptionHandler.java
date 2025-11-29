@@ -77,4 +77,28 @@ public class GeneralExceptionHandler {
         return new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, reason,
                 "Внутренняя ошибка сервера", getStackTrace(e));
     }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ErrorResponse alreadySubscribedException(final AlreadySubscribedException e) {
+        String reason = "Подписка уже существует";
+        log.error("{}. {}", reason, e.getMessage());
+        return new ErrorResponse(HttpStatus.CONFLICT, reason, e.getMessage(), getStackTrace(e));
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ErrorResponse selfSubscriptionException(final SelfSubscriptionException e) {
+        String reason = "Невозможно подписаться на самого себя";
+        log.error("{}. {}", reason, e.getMessage());
+        return new ErrorResponse(HttpStatus.CONFLICT, reason, e.getMessage(), getStackTrace(e));
+    }
+
+    @ExceptionHandler(SecurityException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ErrorResponse securityException(final SecurityException e) {
+        String reason = "Недостаточно прав для выполнения операции";
+        log.warn("{}. {}", reason, e.getMessage());
+        return new ErrorResponse(HttpStatus.FORBIDDEN, reason, e.getMessage(), getStackTrace(e));
+    }
 }
